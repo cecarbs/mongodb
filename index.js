@@ -32,7 +32,8 @@ app.post("/v1/contact", async (req, res) => {
     await test.save();
     res.sendStatus(201);
   } catch (err) {
-    res.sendStatus(500).send(err);
+    console.error(err);
+    res.sendStatus(500);
   }
 });
 
@@ -42,6 +43,7 @@ app.get("/v1/contact", async (req, res) => {
     const result = await Contact.find({});
     res.send(result);
   } catch (err) {
+    console.error(err);
     res.sendStatus(404);
   }
 });
